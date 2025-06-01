@@ -1,0 +1,57 @@
+# === Java & Eclipse ===
+*.class
+*.log
+*.swp
+*~ 
+.metadata
+*.tmp
+*.bak
+*.orig
+*.rej
+*.suo
+*.user
+*.DS_Store
+
+# === Eclipse ===
+.project
+.classpath
+.settings/
+
+# === Android/Gradle ===
+.gradle/
+build/
+captures/
+local.properties
+.gradle/
+.idea/
+*.iml
+
+# === OS files ===
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# === JetBrains (Android Studio, IntelliJ) ===
+*.iml
+.idea/
+out/
+
+# === Log & Cache ===
+*.log
+.cache/
+*.keystore
+*.apk
+*.ap_
+
+# === Kotlin ===
+*.kotlin_module
+
+# === NDK / CMake (nếu có dùng) ===
+.externalNativeBuild
+.cxx
+
+# === Firebase (nếu dùng emulators) ===
+.firebase/

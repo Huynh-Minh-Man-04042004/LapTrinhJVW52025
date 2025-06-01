@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: asus
+Build-Jdk: 21.0.6
+Implementation-Title: JavaWeb52025
+Implementation-Version: 1.0
+Implementation-Vendor-Id: com.laptrinhjavaweb
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/JavaWeb52025
+Created-By: Maven Integration for Eclipse
+
