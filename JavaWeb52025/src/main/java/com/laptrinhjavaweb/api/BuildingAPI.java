@@ -9,15 +9,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.laptrinhjavaweb.bean.AssignmentBuildingBean;
 import com.laptrinhjavaweb.bean.BuildingBean;
+import com.laptrinhjavaweb.customexception.FieldRequiredException;
 
 @RestController
+@RequestMapping("/api/building")
 public class BuildingAPI {
 
-	@GetMapping("/api/building")
+	@GetMapping
 	public List<BuildingBean> getBuilding(@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "street", required = false) String street,
 			@RequestParam(value = "numberofbasement", required = false) Integer numberOfBasement,
@@ -33,27 +37,52 @@ public class BuildingAPI {
 		return null;
 	}
 
-	@PostMapping("/api/building")
-	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding) {
+	/*
+	 * @PostMapping("/api/building") public BuildingBean createBuilding(@RequestBody
+	 * BuildingBean newBuilding) { System.out.println(10/0);
+	 * System.out.println("Hello"); return null; }
+	 */
 
-		return null;
+	@PostMapping
+	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding) {
+		/*
+		 * try { System.out.println(10 / 0); // success return newBuilding; } catch
+		 * (Exception e) { ErrorResponseBean errorResponseBean = new
+		 * ErrorResponseBean(); errorResponseBean.setError(e.getMessage()); List<String>
+		 * details = new ArrayList<String>(); details.add("Lỗi rồi ní ơi!");
+		 * details.add("Sửa lại lẹ đi"); errorResponseBean.setDetails(details); return
+		 * errorResponseBean; }
+		 */
+
+		validateData(newBuilding);
+		return newBuilding;
+	}
+
+	private void validateData(BuildingBean newBuilding){
+		if (newBuilding.getName() == null || newBuilding.getName() == "" || newBuilding.getNumberOfBasement() == null) {
+			throw new FieldRequiredException("Name or NumberOfBasement is required");
+		}
 	}
 
 	/*
 	 * Xử lý xóa một hoặc nhiều building bằng cách truyền qua request 1 mảng id
 	 * buildingIds, sau đó api hứng bằng cách dùng BuildingBean
 	 */
-	@DeleteMapping("/api/building")
+	@DeleteMapping
 	// public void deleteBuilding(@RequestBody Long[] ids) {
 	public void deleteBuilding(@RequestBody BuildingBean deleteBuilding) {
 
 		System.out.println("Hello delete");
 	}
 
-	@PutMapping("/api/building")
-	public List<BuildingBean> updateBuilding(@RequestBody BuildingBean updateBuilding) {
-		System.out.println("Hello");
+	@PutMapping
+	public BuildingBean updateBuilding(@RequestBody BuildingBean updateBuilding) {
 
-		return null;
+		return updateBuilding;
+	}
+
+	@PostMapping("/assignment")
+	public void assignmentBuilding(@RequestBody AssignmentBuildingBean buildingId) {
+
 	}
 }
