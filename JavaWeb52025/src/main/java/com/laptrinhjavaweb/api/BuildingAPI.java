@@ -1,39 +1,39 @@
 package com.laptrinhjavaweb.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.laptrinhjavaweb.bean.BuildingBean;
 
-@RestController
+@Controller
 public class BuildingAPI {
 
-	@GetMapping("/api/building")
+	@RequestMapping(value = "/api/building", method = RequestMethod.GET)
+	@ResponseBody
 	public List<BuildingBean> getBuilding(@RequestParam(value = "name", required = false) String name,
-			@RequestParam(value = "street", required = false) String street,
-			@RequestParam(value = "numberofbasement", required = false) Integer numberOfBasement,
+			@RequestParam(value = "floorArea", required = false) Integer floorArea,
 			@RequestParam(value = "types", required = false) List<String> types) {
-		List<BuildingBean> results = new ArrayList<BuildingBean>();
-		return results;
+		System.out.println("Hello");
+		return null;
 	}
 
-	@GetMapping("/api/building/{buildingid}")
+	@RequestMapping(value = "/api/building/{buildingid}", method = RequestMethod.GET)
+	@ResponseBody
 	public List<BuildingBean> getBuildingDetail(@PathVariable("buildingid") Integer buildingid) {
 		System.out.println("Hello");
 
 		return null;
 	}
 
-	@PostMapping("/api/building")
+	@RequestMapping(value = "/api/building", method = RequestMethod.POST)
+	@ResponseBody
 	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding) {
 
 		return null;
@@ -43,14 +43,15 @@ public class BuildingAPI {
 	 * Xử lý xóa một hoặc nhiều building bằng cách truyền qua request 1 mảng id
 	 * buildingIds, sau đó api hứng bằng cách dùng BuildingBean
 	 */
-	@DeleteMapping("/api/building")
+	@RequestMapping(value = "/api/building", method = RequestMethod.DELETE)
 	// public void deleteBuilding(@RequestBody Long[] ids) {
 	public void deleteBuilding(@RequestBody BuildingBean deleteBuilding) {
 
 		System.out.println("Hello delete");
 	}
 
-	@PutMapping("/api/building")
+	@RequestMapping(value = "/api/building", method = RequestMethod.PUT)
+	@ResponseBody
 	public List<BuildingBean> updateBuilding(@RequestBody BuildingBean updateBuilding) {
 		System.out.println("Hello");
 
