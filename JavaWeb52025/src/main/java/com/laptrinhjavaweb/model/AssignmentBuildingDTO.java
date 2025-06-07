@@ -1,9 +1,9 @@
-package com.laptrinhjavaweb.bean;
+package com.laptrinhjavaweb.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AssignmentBuildingBean {
+public class AssignmentBuildingDTO {
 
 	private Long[] buildingId;
 	private List<Long> staffIds = new ArrayList<>();

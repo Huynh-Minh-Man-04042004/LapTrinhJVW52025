@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptrinhjavaweb.bean.UserBean;
+import com.laptrinhjavaweb.model.UserDTO;
 
 @RestController
 public class UserAPI {
@@ -19,9 +19,9 @@ public class UserAPI {
 	 */
 
 	@GetMapping("/api/users")
-	public List<UserBean> getStaff(@RequestParam(value = "buildingid", required = false) Long buildingid,
+	public List<UserDTO> getStaff(@RequestParam(value = "buildingid", required = false) Long buildingid,
 									@RequestParam(value = "role", required = false) String roleCode) {
-		List<UserBean> results = new ArrayList<UserBean>();
+		List<UserDTO> results = new ArrayList<UserDTO>();
 		return results;
 	}
 }

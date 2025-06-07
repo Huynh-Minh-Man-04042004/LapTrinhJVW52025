@@ -1,6 +1,6 @@
-package com.laptrinhjavaweb.bean;
+package com.laptrinhjavaweb.model;
 
-public class BuildingBean {
+public class BuildingDTO {
 
 	private Long id;
 	private String name;
